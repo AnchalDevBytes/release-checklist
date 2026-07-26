@@ -4,6 +4,14 @@ import cors from "cors";
 import releaseRoutes from "./routes/release.routes";
 import { errorMiddleware } from "./middleware/error.middleware";
 
+process.on("unhandledRejection", (reason) => {
+  console.error("Unhandled Rejection:", reason);
+});
+
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+});
+
 const app = express();
 
 app.use(
@@ -14,7 +22,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   })
 );
-app.options("*", cors());
 
 app.use(express.json());
 
