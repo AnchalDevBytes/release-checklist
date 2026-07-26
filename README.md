@@ -126,6 +126,26 @@ The frontend application will be accessible at `http://localhost:3000`.
 
 ---
 
+## 🌐 Deploying Express Server on Vercel
+
+The Express server is configured for seamless zero-config / serverless deployment on Vercel:
+
+### **Method 1: Deploying via Vercel Dashboard (Recommended)**
+1. Go to [Vercel Dashboard](https://vercel.com/new) and import your Git repository (`AnchalDevBytes/release-checklist`).
+2. Set **Root Directory** to `server`.
+3. In **Environment Variables**, add:
+   - `DATABASE_URL`: Your PostgreSQL connection string.
+4. Click **Deploy**.
+
+### **Method 2: Deploying via Vercel CLI**
+```bash
+cd server
+vercel
+```
+
+---
+
 ## 📝 License
 
 This project is open-source and available under the [ISC License](LICENSE).
+
