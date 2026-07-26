@@ -24,9 +24,10 @@ app.get("/", (_, res) => {
   });
 });
 
+// Support both /api/releases and /releases routes
 app.use("/api/releases", releaseRoutes);
+app.use("/releases", releaseRoutes);
 
 app.use(errorMiddleware);
 
 export default app;
-
