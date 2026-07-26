@@ -56,8 +56,7 @@ export default function ReleaseDetails({
       });
 
       await refresh();
-
-      alert("Release updated successfully.");
+      goBack();
     } catch (error) {
       console.error(error);
       alert("Failed to update release.");
