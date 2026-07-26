@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+server/node_modules/
+
+# Environment Variables
+.env
+.env.*
+*.env
+frontend/.env
+frontend/.env.*
+frontend/src/.env
+frontend/src/.env.*
+server/.env
+server/.env.*
+
+# Next.js Build & Cache
+frontend/.next/
+frontend/out/
+frontend/build/
+.next/
+
+# Server Build Output
+server/dist/
+dist/
+
+# Debug Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# IDE & OS Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Testing & Coverage
+coverage/

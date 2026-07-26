@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Release {
+  id             Int      @id @default(autoincrement())
+  name           String
+  date           DateTime
+  additionalInfo String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  steps ReleaseStep[]
+}
+
+model ReleaseStep {
+  id        Int     @id @default(autoincrement())
+  title     String
+  completed Boolean @default(false)
+
+  releaseId Int
+  release   Release @relation(fields: [releaseId], references: [id], onDelete: Cascade)
+}
