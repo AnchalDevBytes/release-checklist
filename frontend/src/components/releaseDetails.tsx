@@ -16,24 +16,19 @@ export default function ReleaseDetails({
   refresh,
 }: ReleaseDetailsProps) {
   const [additionalInfo, setAdditionalInfo] = useState(
-    release.additionalInfo ?? ""
+    release.additionalInfo ?? "",
   );
 
   const [steps, setSteps] = useState(release.steps);
 
   const [loading, setLoading] = useState(false);
 
-  const handleToggle = async (
-    stepId: number,
-    completed: boolean
-  ) => {
+  const handleToggle = async (stepId: number, completed: boolean) => {
     try {
       setSteps((prev) =>
         prev.map((step) =>
-          step.id === stepId
-            ? { ...step, completed }
-            : step
-        )
+          step.id === stepId ? { ...step, completed } : step,
+        ),
       );
 
       await releaseService.toggleStep(stepId, {
@@ -83,11 +78,8 @@ export default function ReleaseDetails({
 
   return (
     <div className="rounded-xl bg-white shadow">
-
       <div className="flex flex-col gap-4 border-b p-6 md:flex-row md:items-center md:justify-between">
-
         <div>
-
           <button
             onClick={goBack}
             className="mb-2 text-sm text-blue-600 hover:underline"
@@ -95,14 +87,11 @@ export default function ReleaseDetails({
             ← Back to Releases
           </button>
 
-          <h2 className="text-2xl text-slate-900 font-bold">
-            {release.name}
-          </h2>
+          <h2 className="text-2xl text-slate-900 font-bold">{release.name}</h2>
 
           <p className="mt-2 text-sm text-slate-500">
             {new Date(release.date).toLocaleString()}
           </p>
-
         </div>
 
         <span
@@ -110,21 +99,17 @@ export default function ReleaseDetails({
         >
           {release.status}
         </span>
-
       </div>
 
       <div className="grid gap-8 p-6 lg:grid-cols-2">
-
         {/* Left Side */}
 
         <div>
-
           <h3 className="mb-5 text-lg text-slate-800 font-semibold">
             Checklist
           </h3>
 
           <div className="space-y-4">
-
             {steps.map((step) => (
               <label
                 key={step.id}
@@ -133,12 +118,7 @@ export default function ReleaseDetails({
                 <input
                   type="checkbox"
                   checked={step.completed}
-                  onChange={(e) =>
-                    handleToggle(
-                      step.id,
-                      e.target.checked
-                    )
-                  }
+                  onChange={(e) => handleToggle(step.id, e.target.checked)}
                   className="h-5 w-5 accent-blue-600"
                 />
 
@@ -153,15 +133,12 @@ export default function ReleaseDetails({
                 </span>
               </label>
             ))}
-
           </div>
-
         </div>
 
         {/* Right Side */}
 
         <div>
-
           <h3 className="mb-5 text-lg text-slate-800 font-semibold">
             Additional Information
           </h3>
@@ -169,15 +146,12 @@ export default function ReleaseDetails({
           <textarea
             rows={12}
             value={additionalInfo}
-            onChange={(e) =>
-              setAdditionalInfo(e.target.value)
-            }
+            onChange={(e) => setAdditionalInfo(e.target.value)}
             className="w-full rounded-md border p-4 outline-none text-slate-500 focus:border-blue-500"
             placeholder="Enter release notes..."
           />
 
           <div className="mt-6 flex justify-end">
-
             <button
               disabled={loading}
               onClick={handleSave}
@@ -185,13 +159,9 @@ export default function ReleaseDetails({
             >
               {loading ? "Saving..." : "Save"}
             </button>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }
